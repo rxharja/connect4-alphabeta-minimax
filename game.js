@@ -70,6 +70,8 @@ document.querySelector(".clear").addEventListener("click", () => clearBoard());
 const cols = document.querySelectorAll(".col");
 
 const removeEventListeners = () => {
+  const btn = document.querySelector(".clear")
+  btn.replaceWith(btn.cloneNode(true));
   cols.forEach( col => col.replaceWith(col.cloneNode(true)));
 }
 
