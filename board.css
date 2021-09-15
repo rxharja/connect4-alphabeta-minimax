@@ -1,6 +1,7 @@
 body {
   background-color: #454545;
   font-family: sans-serif;
+  color: #F1FFFA;
 }
 
 .center {
@@ -16,13 +17,11 @@ body {
 }
 
 .title {
-  color: #F1FFFA;
   text-align: center;
 }
 
 .win-message {
   position: absolute;
-  color: #F1FFFA;
   position: absolute;
   top: 50%;  
   left: 50%; 
