@@ -4,7 +4,7 @@ let player = 0;
 // minimax parameters
 let humanPlayer = 0;
 let aiPlayer = 1;
-let maxDepth = 6;
+let maxDepth = 1;
 
 // board parameters
 const gridRows = 6;
