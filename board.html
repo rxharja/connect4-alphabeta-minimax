@@ -5,7 +5,9 @@
     <link rel="stylesheet" type="text/css" href="board.css" />
   </head>
   <body>
-    <div class="board">
+    <h1 class="title">Connect 4</h1>
+    <h1 class="win-message"></h1>
+    <div class="board center">
       <div class="col col-0">
         <div class="slot slot-0"></div>
         <div class="slot slot-1"></div>
@@ -64,7 +66,17 @@
       </div>
     </div>
 
-    <button class="clear">Clear</button>
+    <div class="controls center">
+      <button class="clear">Reset</button>
+      <select id="difficulty">
+        <option value=1>passive</option>
+        <option value=2>easy</option>
+        <option value=3>medium</option>
+        <option value=4>challenging</option>
+        <option value=5>hard</option>
+        <option value=6>hardest</option>
+      </select>
+    </div>
 
     <script type="text/javascript" src="./game.js" defer></script>
     <script type="text/javascript" src="./placement.js" defer></script>
