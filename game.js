@@ -1,23 +1,23 @@
-document.querySelector(".clear").addEventListener("click", () => clearBoard());
-
-const cols = document.querySelectorAll(".col");
-
-cols.forEach(( col, i ) => col.addEventListener("click", () => runGame(i)));
-
 const runGame = (col) => {
-  const isValidTurn = placeToken(player, grid, col);
+  maxDepth = Number(document.getElementById("difficulty").value);
 
-  if (isValidTurn) {
-    let won = checkWinState(player, grid);
-    player = player == 0 ? 1 : 0;
-
-    if (!won && (player == aiPlayer)) {
-      opponentMove();
-    }
+  console.log(maxDepth);
+  if ( checkWinState(humanPlayer, grid) || checkWinState(aiPlayer, grid) ) {
+    removeEventListeners();
   }
+  else {
+    const isValidTurn = placeToken(player, grid, col);
 
-  console.log(`Player ${player + 1}'s turn`);
-  rerenderBoard();
+    if (isValidTurn) {
+      player = player == 0 ? 1 : 0;
+
+      if (player == aiPlayer) {
+        opponentMove();
+      }
+    }
+
+    rerenderBoard();
+  }
 }
 
 const opponentMove = () => {
@@ -59,8 +59,19 @@ const checkWinState = (player, grid) => {
   if (isWinState(player, grid)) {
     console.log("Congratulations! you won!")
     // clearBoard();
-    document.querySelector("body").innerHTML += `<div><br><br><h1>${player == 0 ? "You" : "Computer"} won!</h1></div>`;
+    document.querySelector(".win-message").textContent = `${player == 0 ? "You" : "Computer"} won!`;
     return true;
   }
   return false;
 }
+
+document.querySelector(".clear").addEventListener("click", () => clearBoard());
+
+const cols = document.querySelectorAll(".col");
+
+const removeEventListeners = () => {
+  cols.forEach( col => col.replaceWith(col.cloneNode(true)));
+}
+
+cols.forEach(( col, i ) => col.addEventListener("click", () => runGame(i)));
+
